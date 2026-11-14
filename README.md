@@ -2,7 +2,7 @@
 
 An interactive, publication-grade digital lecture suite on **LASERS** designed for B.Sc. Physics students and educators. Features hardware-accelerated SVG animations, high-resolution digitized diagrams, real physical laboratory apparatus photographs, interactive teacher pen & laser pointer tools, audio narration, and knowledge check quizzes.
 
-🌐 **Live Website**: [https://bapanayya.github.io/](https://bapanayya.github.io/)
+🌐 **Live Website**: [https://bapanayya.github.io/LASERs-B.Sc.-Physics/](https://bapanayya.github.io/LASERs-B.Sc.-Physics/)
 
 ---
 
@@ -10,14 +10,14 @@ An interactive, publication-grade digital lecture suite on **LASERS** designed f
 
 | # | Topic | Direct Link | Key Highlights |
 |---|---|---|---|
-| **0** | **Master Course Index** | [index.html](https://bapanayya.github.io/index.html) | Complete interactive textbook containing all 7 sequential units |
-| **1** | **What is LASER? Properties of LASERS** | [1_what_is_laser.html](https://bapanayya.github.io/1_what_is_laser.html) | Acronym breakdown, historical timeline (Einstein, Townes, Maiman, Javan), 4 fundamental properties, real laboratory lasers |
-| **2** | **Spontaneous vs. Stimulated Emission** | [2_spontaneous_vs_stimulated.html](https://bapanayya.github.io/2_spontaneous_vs_stimulated.html) | Side-by-side quantum transition comparison, photon animation, Einstein relations |
-| **3** | **Metastable States & Population Inversion** | [3_metastable_population_inversion.html](https://bapanayya.github.io/3_metastable_population_inversion.html) | Boltzmann distribution non-equilibrium condition ($N_2 > N_1$), long lifetime states ($\sim 10^{-3}\text{ s}$) |
-| **4** | **Principle of LASER** | [4_principle_of_laser.html](https://bapanayya.github.io/4_principle_of_laser.html) | 3-step action: Pumping $\to$ Rapid decay $\to$ Optical cavity avalanche amplification ($L = n \cdot \lambda/2$) |
-| **5** | **Applications of Lasers** | [5_applications_of_laser.html](https://bapanayya.github.io/5_applications_of_laser.html) | Medicine & Surgery, Industry & Manufacturing, Fiber Optics, Holography & Scientific Defense |
-| **6** | **Ruby Laser (Construction & Working)** | [6_ruby_laser.html](https://bapanayya.github.io/6_ruby_laser.html) | 3-level solid-state pulsed red laser ($694.3\text{ nm}$), synthetic ruby rod, helical Xenon flash lamp, Maiman's 1960 original device |
-| **7** | **Helium-Neon (He-Ne) Laser** | [7_hene_laser.html](https://bapanayya.github.io/7_hene_laser.html) | 4-level CW gas laser ($632.8\text{ nm}$), 10:1 He:Ne mixture, resonant collision pumping, operating discharge tube |
+| **0** | **Master Course Index** | [index.html](https://bapanayya.github.io/LASERs-B.Sc.-Physics/index.html) | Complete interactive textbook containing all 7 sequential units |
+| **1** | **What is LASER? Properties of LASERS** | [1_what_is_laser.html](https://bapanayya.github.io/LASERs-B.Sc.-Physics/1_what_is_laser.html) | Acronym breakdown, historical timeline (Einstein, Townes, Maiman, Javan), 4 fundamental properties, real laboratory lasers |
+| **2** | **Spontaneous vs. Stimulated Emission** | [2_spontaneous_vs_stimulated.html](https://bapanayya.github.io/LASERs-B.Sc.-Physics/2_spontaneous_vs_stimulated.html) | Side-by-side quantum transition comparison, photon animation, Einstein relations |
+| **3** | **Metastable States & Population Inversion** | [3_metastable_population_inversion.html](https://bapanayya.github.io/LASERs-B.Sc.-Physics/3_metastable_population_inversion.html) | Boltzmann distribution non-equilibrium condition ($N_2 > N_1$), long lifetime states ($\sim 10^{-3}\text{ s}$) |
+| **4** | **Principle of LASER** | [4_principle_of_laser.html](https://bapanayya.github.io/LASERs-B.Sc.-Physics/4_principle_of_laser.html) | 3-step action: Pumping $\to$ Rapid decay $\to$ Optical cavity avalanche amplification ($L = n \cdot \lambda/2$) |
+| **5** | **Applications of Lasers** | [5_applications_of_laser.html](https://bapanayya.github.io/LASERs-B.Sc.-Physics/5_applications_of_laser.html) | Medicine & Surgery, Industry & Manufacturing, Fiber Optics, Holography & Scientific Defense |
+| **6** | **Ruby Laser (Construction & Working)** | [6_ruby_laser.html](https://bapanayya.github.io/LASERs-B.Sc.-Physics/6_ruby_laser.html) | 3-level solid-state pulsed red laser ($694.3\text{ nm}$), synthetic ruby rod, helical Xenon flash lamp, Maiman's 1960 original device |
+| **7** | **Helium-Neon (He-Ne) Laser** | [7_hene_laser.html](https://bapanayya.github.io/LASERs-B.Sc.-Physics/7_hene_laser.html) | 4-level CW gas laser ($632.8\text{ nm}$), 10:1 He:Ne mixture, resonant collision pumping, operating discharge tube |
 
 ---
 
@@ -39,4 +39,4 @@ An interactive, publication-grade digital lecture suite on **LASERS** designed f
 * **Department**: Department of Physics
 * **Institution**: S.V. Arts College / Higher Education, Tirupati, AP, India
 * **GitHub**: [@bapanayya](https://github.com/bapanayya)
-* **Website**: [https://bapanayya.github.io/](https://bapanayya.github.io/)
+* **Website**: [https://bapanayya.github.io/LASERs-B.Sc.-Physics/](https://bapanayya.github.io/LASERs-B.Sc.-Physics/)
