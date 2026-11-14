@@ -43,11 +43,16 @@
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       border-bottom: 2px solid #E2E8F0;
-      padding: 12px 24px;
+      padding: 10px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+    .nav-header-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
     .brand {
       display: flex;
@@ -65,10 +70,14 @@
       border-radius: 50%;
       box-shadow: 0 0 10px #FF1744, 0 0 20px #FF1744;
       animation: pulse 1.5s infinite;
+      flex-shrink: 0;
     }
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.3); opacity: 0.7; }
+    }
+    .mobile-nav-toggle {
+      display: none;
     }
     .nav-menu {
       display: flex;
@@ -108,6 +117,12 @@
       align-items: center;
       gap: 8px;
       transition: all 0.2s;
+      text-decoration: none;
+    }
+    .pill-red {
+      background: linear-gradient(135deg, #FF1744, #D50000);
+      color: white;
+      box-shadow: 0 4px 10px rgba(213, 0, 0, 0.25);
     }
     .pill-blue {
       background: linear-gradient(135deg, #1E88E5, #1565C0);
@@ -561,6 +576,324 @@
       transform: none !important;
       stroke-dashoffset: 0 !important;
     }
+
+    /* Table Responsive Wrapper */
+    .table-responsive-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 24px 0;
+    }
+
+    /* ==============================================================
+       RESPONSIVE DESIGN BREAKPOINTS FOR MOBILE & TABLET DEVICES
+       ============================================================== */
+
+    /* TABLET & MOBILE VIEWPORT (< 1024px) */
+    @media (max-width: 1023px) {
+      .top-nav {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      }
+      .nav-header-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 56px;
+        padding: 0 16px;
+        background: #FFFFFF;
+      }
+      .brand {
+        font-size: 1.15rem;
+        gap: 8px;
+      }
+      .brand-text {
+        font-size: 1.12rem;
+        letter-spacing: 0.5px;
+      }
+      .mobile-nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: linear-gradient(135deg, #D50000, #B71C1C);
+        color: #FFFFFF;
+        border: none;
+        border-radius: 9999px;
+        padding: 7px 15px;
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(213, 0, 0, 0.25);
+        transition: all 0.2s ease;
+      }
+      .mobile-nav-toggle:active {
+        transform: scale(0.96);
+      }
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 12px 16px;
+        background: #FFFFFF;
+        gap: 8px;
+        max-height: calc(85vh - 56px);
+        overflow-y: auto;
+        border-top: 1px solid #E2E8F0;
+        border-bottom: 1px solid #E2E8F0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+      .nav-actions {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 16px 14px;
+        background: #FFFFFF;
+        gap: 8px;
+      }
+      .top-nav.menu-open .nav-menu {
+        display: flex;
+        animation: navMenuSlide 0.2s ease-out;
+      }
+      .top-nav.menu-open .nav-actions {
+        display: flex;
+        animation: navMenuSlide 0.2s ease-out;
+      }
+      @keyframes navMenuSlide {
+        from { opacity: 0; transform: translateY(-6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .nav-btn {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 10px 16px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+      }
+      .action-pill {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 16px;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* PHONE SCREENS (<= 768px) */
+    @media (max-width: 768px) {
+      body {
+        font-size: 17px;
+        line-height: 1.65;
+      }
+      .container {
+        padding: 16px 12px 80px;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      .hero {
+        padding: 22px 14px;
+        border-radius: 16px;
+        margin-bottom: 24px;
+      }
+      .badge-hero {
+        font-size: 0.78rem;
+        padding: 5px 12px;
+        letter-spacing: 0.8px;
+        margin-bottom: 12px;
+      }
+      .hero h1 {
+        font-size: 1.65rem;
+        line-height: 1.25;
+        margin-bottom: 10px;
+        word-break: break-word;
+      }
+      .hero p {
+        font-size: 1.02rem;
+        line-height: 1.5;
+      }
+      .topic-section {
+        padding: 18px 14px;
+        border-radius: 14px;
+        margin-bottom: 28px;
+        scroll-margin-top: 66px;
+      }
+      .glossy-heading {
+        font-size: 1.15rem;
+        padding: 8px 14px;
+        border-radius: 14px;
+        display: inline-flex;
+        max-width: 100%;
+        word-break: break-word;
+        line-height: 1.35;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .glossy-subheading {
+        font-size: 1.02rem;
+        padding: 6px 12px;
+        border-radius: 10px;
+        display: inline-flex;
+        max-width: 100%;
+        word-break: break-word;
+        line-height: 1.35;
+        gap: 6px;
+        margin: 18px 0 12px;
+      }
+      .bullets {
+        margin: 12px 0 18px;
+        padding-left: 0;
+      }
+      .bullets li {
+        font-size: 1.02rem;
+        line-height: 1.55;
+        padding-left: 24px;
+        margin-bottom: 12px;
+      }
+      .bullets li::before {
+        left: 4px;
+        font-size: 1.4rem;
+        top: -3px;
+      }
+      .diagram-box {
+        padding: 12px 8px;
+        margin: 18px 0;
+        border-radius: 12px;
+      }
+      .diagram-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding-bottom: 10px;
+        margin-bottom: 14px;
+      }
+      .diagram-label {
+        font-size: 1.05rem;
+        line-height: 1.35;
+      }
+      .diagram-view-tabs {
+        width: 100%;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .view-btn {
+        width: 100%;
+        text-align: center;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+      .diagram-content-view {
+        min-height: 220px;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .interactive-svg {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .diagram-image {
+        max-width: 100%;
+        height: auto;
+      }
+      .ctrl-bar {
+        width: 100%;
+        border-radius: 14px;
+        padding: 8px;
+        gap: 6px;
+        justify-content: center;
+      }
+      .ctrl-btn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+      }
+      .status-pill {
+        width: 100%;
+        text-align: center;
+        font-size: 0.82rem;
+        padding: 4px 10px;
+      }
+      .table-responsive-wrapper {
+        margin: 16px 0;
+        border: 1px solid #E2E8F0;
+        border-radius: 10px;
+      }
+      .styled-table {
+        min-width: 500px;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+      }
+      .styled-table th, .styled-table td {
+        padding: 10px 12px;
+        font-size: 0.92rem;
+      }
+      .real-device-card {
+        padding: 14px;
+        margin: 18px 0;
+        border-radius: 12px;
+      }
+      .real-device-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+      }
+      .real-device-title {
+        font-size: 1.15rem;
+      }
+      .real-device-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .real-device-img {
+        height: 190px;
+      }
+      .real-caption {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        margin-top: 8px;
+      }
+      .applications-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin: 18px 0;
+      }
+      .app-box {
+        padding: 16px;
+        border-radius: 12px;
+      }
+      .quiz-card {
+        padding: 16px;
+        margin: 20px 0 12px;
+        border-radius: 12px;
+      }
+      .quiz-question {
+        font-size: 1.05rem;
+        line-height: 1.4;
+        margin-bottom: 12px;
+      }
+      .quiz-btn {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        border-radius: 8px;
+      }
+      .quiz-feedback {
+        font-size: 0.95rem;
+      }
+      footer {
+        padding: 24px 14px;
+        font-size: 0.9rem;
+      }
+    }
     
 
     /* --- TEACHER ANNOTATION & LASER POINTER SYSTEM --- */
@@ -831,31 +1164,90 @@
     #annotationToast.show {
       opacity: 1;
     }
+
+    /* Mobile Responsive Optimizations for Annotation System */
+    @media (max-width: 768px) {
+      #teacherPillLauncher {
+        bottom: 12px;
+        right: 12px;
+        font-size: 0.82rem;
+        padding: 7px 14px;
+        gap: 6px;
+        box-shadow: 0 4px 14px rgba(213, 0, 0, 0.4);
+        z-index: 999;
+      }
+      #teacherToolbar {
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 96vw;
+        max-width: 96vw;
+        padding: 6px 8px;
+        border-radius: 20px;
+        gap: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+      #teacherToolbar.minimized {
+        transform: translateX(-50%) translateY(120px);
+      }
+      .tb-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.95rem;
+      }
+      .tb-divider {
+        height: 20px;
+        margin: 0 2px;
+      }
+      .tb-color-swatch {
+        width: 22px;
+        height: 22px;
+      }
+      .tb-size-btn {
+        padding: 2px 7px;
+        font-size: 0.75rem;
+      }
+      #annotationToast {
+        top: 65px;
+        font-size: 0.85rem;
+        padding: 8px 16px;
+        width: 90%;
+        text-align: center;
+      }
+    }
     
 </style>
 </head>
 <body>
   <!-- Top Sticky Navbar -->
-  <nav class="top-nav">
-    <a href="index.html" class="brand">
-      <span class="laser-dot"></span>
-      <span>LASERS MASTERCLASS</span>
-    </a>
-
-    <div class="nav-menu">
-      <a href="index.html" class="nav-btn">🏠 All Topics</a>
-      <a href="1_what_is_laser.html" class="nav-btn ">1. What is Laser?</a>
-      <a href="2_spontaneous_vs_stimulated.html" class="nav-btn ">2. Emission Types</a>
-      <a href="3_metastable_population_inversion.html" class="nav-btn ">3. Population Inversion</a>
-      <a href="4_principle_of_laser.html" class="nav-btn ">4. Laser Principle</a>
-      <a href="5_applications_of_laser.html" class="nav-btn ">5. Applications</a>
-      <a href="6_ruby_laser.html" class="nav-btn ">6. Ruby Laser</a>
-      <a href="7_hene_laser.html" class="nav-btn active">7. He-Ne Laser</a>
+  <nav class="top-nav" id="topNav">
+    <div class="nav-header-bar">
+      <a href="index.html" class="brand">
+        <span class="laser-dot"></span>
+        <span class="brand-text">LASERS MASTERCLASS</span>
+      </a>
+      <button class="mobile-nav-toggle" id="mobileNavToggle" onclick="toggleMobileNav()" aria-label="Toggle navigation menu">
+        <span class="toggle-icon">☰</span>
+        <span class="toggle-label">Topics</span>
+      </button>
     </div>
 
-    <div class="nav-actions">
-      <button class="action-pill pill-red" onclick="toggleAnnotationToolbar()" title="Draw, write, underline, or laser-point on the page (Shortcut: Alt+P)">✏️ Pen &amp; Pointer</button>
-      <button class="action-pill pill-blue" onclick="togglePresentationMode()">📽 Presentation</button>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-btn" onclick="closeMobileNav()">🏠 All Topics</a>
+      <a href="1_what_is_laser.html" class="nav-btn " onclick="closeMobileNav()">1. What is Laser?</a>
+      <a href="2_spontaneous_vs_stimulated.html" class="nav-btn " onclick="closeMobileNav()">2. Emission Types</a>
+      <a href="3_metastable_population_inversion.html" class="nav-btn " onclick="closeMobileNav()">3. Population Inversion</a>
+      <a href="4_principle_of_laser.html" class="nav-btn " onclick="closeMobileNav()">4. Laser Principle</a>
+      <a href="5_applications_of_laser.html" class="nav-btn " onclick="closeMobileNav()">5. Applications</a>
+      <a href="6_ruby_laser.html" class="nav-btn " onclick="closeMobileNav()">6. Ruby Laser</a>
+      <a href="7_hene_laser.html" class="nav-btn active" onclick="closeMobileNav()">7. He-Ne Laser</a>
+    </div>
+
+    <div class="nav-actions" id="navActions">
+      <button class="action-pill pill-red" onclick="toggleAnnotationToolbar(); closeMobileNav();" title="Draw, write, underline, or laser-point on the page (Shortcut: Alt+P)">✏️ Pen &amp; Pointer</button>
+      <button class="action-pill pill-blue" onclick="togglePresentationMode(); closeMobileNav();">📽 Presentation</button>
     </div>
   </nav>
 
@@ -1273,47 +1665,49 @@
       </div>
 
       <div class="glossy-subheading gloss-blue">Key Advantages of He-Ne Laser over Ruby Laser</div>
-      <table class="styled-table">
-        <thead>
-          <tr style="background:#E3F2FD;">
-            <th style="color:#0D47A1;">Feature / Parameter</th>
-            <th style="color:#D50000;">Ruby Laser</th>
-            <th style="color:#0288D1;">Helium-Neon (He-Ne) Laser</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="bold-keyword">Type of Laser</span></td>
-            <td>Solid-state crystal laser (3-level)</td>
-            <td>Gas laser (4-level)</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">Nature of Output Beam</span></td>
-            <td><b>Pulsed output</b> (short microsecond bursts)</td>
-            <td><b>Continuous Wave (CW)</b> steady beam</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">Emission Wavelength</span></td>
-            <td>694.3 nm (6943 Å, deep red)</td>
-            <td>632.8 nm (6328 Å, bright orange-red)</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">Monochromaticity &amp; Purity</span></td>
-            <td>Moderate monochromaticity</td>
-            <td><b>Exceptionally high purity</b> and narrow spectral linewidth</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">Pumping Source</span></td>
-            <td>Optical pumping (Helical Xenon flash lamp)</td>
-            <td>Electrical discharge (R.F. generator electron collisions)</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">Power Input Required</span></td>
-            <td>Extremely high energy pulses (thousands of joules)</td>
-            <td>Low power continuous input (~50 Watts)</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive-wrapper">
+        <table class="styled-table">
+          <thead>
+            <tr style="background:#E3F2FD;">
+              <th style="color:#0D47A1;">Feature / Parameter</th>
+              <th style="color:#D50000;">Ruby Laser</th>
+              <th style="color:#0288D1;">Helium-Neon (He-Ne) Laser</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="bold-keyword">Type of Laser</span></td>
+              <td>Solid-state crystal laser (3-level)</td>
+              <td>Gas laser (4-level)</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">Nature of Output Beam</span></td>
+              <td><b>Pulsed output</b> (short microsecond bursts)</td>
+              <td><b>Continuous Wave (CW)</b> steady beam</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">Emission Wavelength</span></td>
+              <td>694.3 nm (6943 Å, deep red)</td>
+              <td>632.8 nm (6328 Å, bright orange-red)</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">Monochromaticity &amp; Purity</span></td>
+              <td>Moderate monochromaticity</td>
+              <td><b>Exceptionally high purity</b> and narrow spectral linewidth</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">Pumping Source</span></td>
+              <td>Optical pumping (Helical Xenon flash lamp)</td>
+              <td>Electrical discharge (R.F. generator electron collisions)</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">Power Input Required</span></td>
+              <td>Extremely high energy pulses (thousands of joules)</td>
+              <td>Low power continuous input (~50 Watts)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- Knowledge Check Quiz -->
       <div class="quiz-card">
@@ -1581,6 +1975,44 @@
         btn.innerText = isPres ? "Exit Presentation Mode" : "📽 Presentation Mode";
       }
     }
+
+    // Mobile Navigation Drawer Toggle
+    function toggleMobileNav() {
+      const nav = document.getElementById('topNav');
+      const toggleBtn = document.getElementById('mobileNavToggle');
+      if (!nav) return;
+      nav.classList.toggle('menu-open');
+      const isOpen = nav.classList.contains('menu-open');
+      if (toggleBtn) {
+        const icon = toggleBtn.querySelector('.toggle-icon');
+        const label = toggleBtn.querySelector('.toggle-label');
+        if (icon) icon.innerText = isOpen ? "✕" : "☰";
+        if (label) label.innerText = isOpen ? "Close" : "Topics";
+      }
+    }
+
+    function closeMobileNav() {
+      const nav = document.getElementById('topNav');
+      const toggleBtn = document.getElementById('mobileNavToggle');
+      if (nav && nav.classList.contains('menu-open')) {
+        nav.classList.remove('menu-open');
+        if (toggleBtn) {
+          const icon = toggleBtn.querySelector('.toggle-icon');
+          const label = toggleBtn.querySelector('.toggle-label');
+          if (icon) icon.innerText = "☰";
+          if (label) label.innerText = "Topics";
+        }
+      }
+    }
+
+    // Auto-close mobile drawer when clicking anywhere outside top navigation
+    document.addEventListener('click', function(e) {
+      const nav = document.getElementById('topNav');
+      if (!nav) return;
+      if (!nav.contains(e.target) && nav.classList.contains('menu-open')) {
+        closeMobileNav();
+      }
+    });
     
 
 // --- TEACHER ANNOTATION & LASER POINTER JAVASCRIPT ENGINE ---

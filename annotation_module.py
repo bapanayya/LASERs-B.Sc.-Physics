@@ -270,6 +270,59 @@ def get_annotation_css():
     #annotationToast.show {
       opacity: 1;
     }
+
+    /* Mobile Responsive Optimizations for Annotation System */
+    @media (max-width: 768px) {
+      #teacherPillLauncher {
+        bottom: 12px;
+        right: 12px;
+        font-size: 0.82rem;
+        padding: 7px 14px;
+        gap: 6px;
+        box-shadow: 0 4px 14px rgba(213, 0, 0, 0.4);
+        z-index: 999;
+      }
+      #teacherToolbar {
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 96vw;
+        max-width: 96vw;
+        padding: 6px 8px;
+        border-radius: 20px;
+        gap: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+      #teacherToolbar.minimized {
+        transform: translateX(-50%) translateY(120px);
+      }
+      .tb-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.95rem;
+      }
+      .tb-divider {
+        height: 20px;
+        margin: 0 2px;
+      }
+      .tb-color-swatch {
+        width: 22px;
+        height: 22px;
+      }
+      .tb-size-btn {
+        padding: 2px 7px;
+        font-size: 0.75rem;
+      }
+      #annotationToast {
+        top: 65px;
+        font-size: 0.85rem;
+        padding: 8px 16px;
+        width: 90%;
+        text-align: center;
+      }
+    }
     """
 
 def get_annotation_html():

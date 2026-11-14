@@ -187,52 +187,54 @@ def get_section_2_html():
 
       <!-- COMPARISON TABLE -->
       <div class="glossy-subheading gloss-blue">Distinction Table: Spontaneous vs. Stimulated Emission</div>
-      <table class="styled-table">
-        <thead>
-          <tr style="background:#E3F2FD;">
-            <th style="width:25%; color:#0D47A1;">Characteristic</th>
-            <th style="width:37%; color:#0D47A1;">Spontaneous Emission</th>
-            <th style="width:38%; color:#B71C1C;">Stimulated Emission</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="bold-keyword">1. Triggering Mechanism</span></td>
-            <td>Occurs spontaneously after natural lifetime (~10⁻⁸ s) without external radiation.</td>
-            <td>Induced by an external incident photon of energy matching <b>hν = E₂ - E₁</b>.</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">2. Direction of Photons</span></td>
-            <td>Emitted photons propagate in completely <b>random directions</b> (isotropic).</td>
-            <td>Emitted photon propagates in the <b>exact same direction</b> as the incident photon.</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">3. Phase Relationship</span></td>
-            <td>Random phase differences between emitted photons (out of step).</td>
-            <td>Identical phase (coherent lockstep with incident wave).</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">4. Degree of Coherence</span></td>
-            <td><b>Incoherent radiation</b>.</td>
-            <td><b>Highly Coherent radiation</b>.</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">5. Spectral Nature</span></td>
-            <td>Polychromatic / broad spectrum with wide linewidth.</td>
-            <td>Strictly <b>monochromatic</b> single wavelength radiation.</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">6. Optical Amplification</span></td>
-            <td>No amplification (independent emissions).</td>
-            <td><b>Optical Amplification achieved</b> (1 incident photon yields 2 coherent photons).</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">7. Transition Rate</span></td>
-            <td>Rate = <b>A₂₁ · N₂</b> (proportional solely to population N₂).</td>
-            <td>Rate = <b>B₂₁ · ρ(ν) · N₂</b> (proportional to radiation energy density ρ(ν) and N₂).</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive-wrapper">
+        <table class="styled-table">
+          <thead>
+            <tr style="background:#E3F2FD;">
+              <th style="width:25%; color:#0D47A1;">Characteristic</th>
+              <th style="width:37%; color:#0D47A1;">Spontaneous Emission</th>
+              <th style="width:38%; color:#B71C1C;">Stimulated Emission</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="bold-keyword">1. Triggering Mechanism</span></td>
+              <td>Occurs spontaneously after natural lifetime (~10⁻⁸ s) without external radiation.</td>
+              <td>Induced by an external incident photon of energy matching <b>hν = E₂ - E₁</b>.</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">2. Direction of Photons</span></td>
+              <td>Emitted photons propagate in completely <b>random directions</b> (isotropic).</td>
+              <td>Emitted photon propagates in the <b>exact same direction</b> as the incident photon.</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">3. Phase Relationship</span></td>
+              <td>Random phase differences between emitted photons (out of step).</td>
+              <td>Identical phase (coherent lockstep with incident wave).</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">4. Degree of Coherence</span></td>
+              <td><b>Incoherent radiation</b>.</td>
+              <td><b>Highly Coherent radiation</b>.</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">5. Spectral Nature</span></td>
+              <td>Polychromatic / broad spectrum with wide linewidth.</td>
+              <td>Strictly <b>monochromatic</b> single wavelength radiation.</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">6. Optical Amplification</span></td>
+              <td>No amplification (independent emissions).</td>
+              <td><b>Optical Amplification achieved</b> (1 incident photon yields 2 coherent photons).</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">7. Transition Rate</span></td>
+              <td>Rate = <b>A₂₁ · N₂</b> (proportional solely to population N₂).</td>
+              <td>Rate = <b>B₂₁ · ρ(ν) · N₂</b> (proportional to radiation energy density ρ(ν) and N₂).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- Knowledge Check Quiz -->
       <div class="quiz-card">
@@ -785,47 +787,49 @@ def get_section_7_html():
       </div>
 
       <div class="glossy-subheading gloss-blue">Key Advantages of He-Ne Laser over Ruby Laser</div>
-      <table class="styled-table">
-        <thead>
-          <tr style="background:#E3F2FD;">
-            <th style="color:#0D47A1;">Feature / Parameter</th>
-            <th style="color:#D50000;">Ruby Laser</th>
-            <th style="color:#0288D1;">Helium-Neon (He-Ne) Laser</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="bold-keyword">Type of Laser</span></td>
-            <td>Solid-state crystal laser (3-level)</td>
-            <td>Gas laser (4-level)</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">Nature of Output Beam</span></td>
-            <td><b>Pulsed output</b> (short microsecond bursts)</td>
-            <td><b>Continuous Wave (CW)</b> steady beam</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">Emission Wavelength</span></td>
-            <td>694.3 nm (6943 Å, deep red)</td>
-            <td>632.8 nm (6328 Å, bright orange-red)</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">Monochromaticity &amp; Purity</span></td>
-            <td>Moderate monochromaticity</td>
-            <td><b>Exceptionally high purity</b> and narrow spectral linewidth</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">Pumping Source</span></td>
-            <td>Optical pumping (Helical Xenon flash lamp)</td>
-            <td>Electrical discharge (R.F. generator electron collisions)</td>
-          </tr>
-          <tr>
-            <td><span class="bold-keyword">Power Input Required</span></td>
-            <td>Extremely high energy pulses (thousands of joules)</td>
-            <td>Low power continuous input (~50 Watts)</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive-wrapper">
+        <table class="styled-table">
+          <thead>
+            <tr style="background:#E3F2FD;">
+              <th style="color:#0D47A1;">Feature / Parameter</th>
+              <th style="color:#D50000;">Ruby Laser</th>
+              <th style="color:#0288D1;">Helium-Neon (He-Ne) Laser</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="bold-keyword">Type of Laser</span></td>
+              <td>Solid-state crystal laser (3-level)</td>
+              <td>Gas laser (4-level)</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">Nature of Output Beam</span></td>
+              <td><b>Pulsed output</b> (short microsecond bursts)</td>
+              <td><b>Continuous Wave (CW)</b> steady beam</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">Emission Wavelength</span></td>
+              <td>694.3 nm (6943 Å, deep red)</td>
+              <td>632.8 nm (6328 Å, bright orange-red)</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">Monochromaticity &amp; Purity</span></td>
+              <td>Moderate monochromaticity</td>
+              <td><b>Exceptionally high purity</b> and narrow spectral linewidth</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">Pumping Source</span></td>
+              <td>Optical pumping (Helical Xenon flash lamp)</td>
+              <td>Electrical discharge (R.F. generator electron collisions)</td>
+            </tr>
+            <tr>
+              <td><span class="bold-keyword">Power Input Required</span></td>
+              <td>Extremely high energy pulses (thousands of joules)</td>
+              <td>Low power continuous input (~50 Watts)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- Knowledge Check Quiz -->
       <div class="quiz-card">
@@ -867,25 +871,31 @@ def build_master_index():
 <body>
 
   <!-- Top Sticky Navbar -->
-  <nav class="top-nav">
-    <a href="#top" class="brand">
-      <span class="laser-dot"></span>
-      <span>LASERS MASTERCLASS</span>
-    </a>
-
-    <div class="nav-menu">
-      <a href="#section-1" class="nav-btn">1. What is Laser?</a>
-      <a href="#section-2" class="nav-btn">2. Spontaneous vs Stimulated</a>
-      <a href="#section-3" class="nav-btn">3. Population Inversion</a>
-      <a href="#section-4" class="nav-btn">4. Laser Principle</a>
-      <a href="#section-5" class="nav-btn">5. Applications</a>
-      <a href="#section-6" class="nav-btn">6. Ruby Laser</a>
-      <a href="#section-7" class="nav-btn">7. He-Ne Laser</a>
+  <nav class="top-nav" id="topNav">
+    <div class="nav-header-bar">
+      <a href="#top" class="brand">
+        <span class="laser-dot"></span>
+        <span class="brand-text">LASERS MASTERCLASS</span>
+      </a>
+      <button class="mobile-nav-toggle" id="mobileNavToggle" onclick="toggleMobileNav()" aria-label="Toggle navigation menu">
+        <span class="toggle-icon">☰</span>
+        <span class="toggle-label">Topics</span>
+      </button>
     </div>
 
-    <div class="nav-actions">
-      <button class="action-pill pill-red" onclick="toggleAnnotationToolbar()" title="Draw, write, underline, or laser-point on the page (Shortcut: Alt+P)">✏️ Pen &amp; Pointer</button>
-      <button id="presModeBtn" class="action-pill pill-blue" onclick="togglePresentationMode()">📽 Presentation Mode</button>
+    <div class="nav-menu" id="navMenu">
+      <a href="#section-1" class="nav-btn" onclick="closeMobileNav()">1. What is Laser?</a>
+      <a href="#section-2" class="nav-btn" onclick="closeMobileNav()">2. Spontaneous vs Stimulated</a>
+      <a href="#section-3" class="nav-btn" onclick="closeMobileNav()">3. Population Inversion</a>
+      <a href="#section-4" class="nav-btn" onclick="closeMobileNav()">4. Laser Principle</a>
+      <a href="#section-5" class="nav-btn" onclick="closeMobileNav()">5. Applications</a>
+      <a href="#section-6" class="nav-btn" onclick="closeMobileNav()">6. Ruby Laser</a>
+      <a href="#section-7" class="nav-btn" onclick="closeMobileNav()">7. He-Ne Laser</a>
+    </div>
+
+    <div class="nav-actions" id="navActions">
+      <button class="action-pill pill-red" onclick="toggleAnnotationToolbar(); closeMobileNav();" title="Draw, write, underline, or laser-point on the page (Shortcut: Alt+P)">✏️ Pen &amp; Pointer</button>
+      <button id="presModeBtn" class="action-pill pill-blue" onclick="togglePresentationMode(); closeMobileNav();">📽 Presentation Mode</button>
     </div>
   </nav>
 
@@ -987,26 +997,32 @@ def build_individual_pages():
 </head>
 <body>
   <!-- Top Sticky Navbar -->
-  <nav class="top-nav">
-    <a href="index.html" class="brand">
-      <span class="laser-dot"></span>
-      <span>LASERS MASTERCLASS</span>
-    </a>
-
-    <div class="nav-menu">
-      <a href="index.html" class="nav-btn">🏠 All Topics</a>
-      <a href="1_what_is_laser.html" class="nav-btn {'active' if filename == '1_what_is_laser.html' else ''}">1. What is Laser?</a>
-      <a href="2_spontaneous_vs_stimulated.html" class="nav-btn {'active' if filename == '2_spontaneous_vs_stimulated.html' else ''}">2. Emission Types</a>
-      <a href="3_metastable_population_inversion.html" class="nav-btn {'active' if filename == '3_metastable_population_inversion.html' else ''}">3. Population Inversion</a>
-      <a href="4_principle_of_laser.html" class="nav-btn {'active' if filename == '4_principle_of_laser.html' else ''}">4. Laser Principle</a>
-      <a href="5_applications_of_laser.html" class="nav-btn {'active' if filename == '5_applications_of_laser.html' else ''}">5. Applications</a>
-      <a href="6_ruby_laser.html" class="nav-btn {'active' if filename == '6_ruby_laser.html' else ''}">6. Ruby Laser</a>
-      <a href="7_hene_laser.html" class="nav-btn {'active' if filename == '7_hene_laser.html' else ''}">7. He-Ne Laser</a>
+  <nav class="top-nav" id="topNav">
+    <div class="nav-header-bar">
+      <a href="index.html" class="brand">
+        <span class="laser-dot"></span>
+        <span class="brand-text">LASERS MASTERCLASS</span>
+      </a>
+      <button class="mobile-nav-toggle" id="mobileNavToggle" onclick="toggleMobileNav()" aria-label="Toggle navigation menu">
+        <span class="toggle-icon">☰</span>
+        <span class="toggle-label">Topics</span>
+      </button>
     </div>
 
-    <div class="nav-actions">
-      <button class="action-pill pill-red" onclick="toggleAnnotationToolbar()" title="Draw, write, underline, or laser-point on the page (Shortcut: Alt+P)">✏️ Pen &amp; Pointer</button>
-      <button class="action-pill pill-blue" onclick="togglePresentationMode()">📽 Presentation</button>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-btn" onclick="closeMobileNav()">🏠 All Topics</a>
+      <a href="1_what_is_laser.html" class="nav-btn {'active' if filename == '1_what_is_laser.html' else ''}" onclick="closeMobileNav()">1. What is Laser?</a>
+      <a href="2_spontaneous_vs_stimulated.html" class="nav-btn {'active' if filename == '2_spontaneous_vs_stimulated.html' else ''}" onclick="closeMobileNav()">2. Emission Types</a>
+      <a href="3_metastable_population_inversion.html" class="nav-btn {'active' if filename == '3_metastable_population_inversion.html' else ''}" onclick="closeMobileNav()">3. Population Inversion</a>
+      <a href="4_principle_of_laser.html" class="nav-btn {'active' if filename == '4_principle_of_laser.html' else ''}" onclick="closeMobileNav()">4. Laser Principle</a>
+      <a href="5_applications_of_laser.html" class="nav-btn {'active' if filename == '5_applications_of_laser.html' else ''}" onclick="closeMobileNav()">5. Applications</a>
+      <a href="6_ruby_laser.html" class="nav-btn {'active' if filename == '6_ruby_laser.html' else ''}" onclick="closeMobileNav()">6. Ruby Laser</a>
+      <a href="7_hene_laser.html" class="nav-btn {'active' if filename == '7_hene_laser.html' else ''}" onclick="closeMobileNav()">7. He-Ne Laser</a>
+    </div>
+
+    <div class="nav-actions" id="navActions">
+      <button class="action-pill pill-red" onclick="toggleAnnotationToolbar(); closeMobileNav();" title="Draw, write, underline, or laser-point on the page (Shortcut: Alt+P)">✏️ Pen &amp; Pointer</button>
+      <button class="action-pill pill-blue" onclick="togglePresentationMode(); closeMobileNav();">📽 Presentation</button>
     </div>
   </nav>
 
