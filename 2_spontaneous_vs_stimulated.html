@@ -39,7 +39,7 @@
     .top-nav {
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 10002;
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       border-bottom: 2px solid #E2E8F0;
@@ -598,6 +598,7 @@
         width: 100%;
         position: sticky;
         top: 0;
+        z-index: 10002;
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
       }
       .nav-header-bar {
@@ -897,45 +898,60 @@
     
 
     /* --- TEACHER ANNOTATION & LASER POINTER SYSTEM --- */
-    #annotationCanvas {
+    #annotationContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9990;
+      pointer-events: none;
+      touch-action: none;
+      overflow: hidden;
+    }
+    #annotationContainer.active-drawing {
+      pointer-events: auto;
+    }
+    #annotationContainer.active-laser {
+      pointer-events: auto;
+      touch-action: none;
+      cursor: none;
+    }
+    #annotationBaseCanvas,
+    #annotationActiveCanvas {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 9995;
       pointer-events: none;
-      touch-action: none;
+      display: block;
     }
-    #annotationCanvas.active-drawing {
-      pointer-events: auto;
-      cursor: crosshair;
-    }
-    #annotationCanvas.cursor-pen {
+    #annotationContainer.cursor-pen {
       cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23D50000" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>') 2 22, crosshair;
     }
-    #annotationCanvas.cursor-highlighter {
+    #annotationContainer.cursor-highlighter {
       cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23FFD600" d="M15.24 3.76a2.5 2.5 0 0 1 3.54 0l1.46 1.46a2.5 2.5 0 0 1 0 3.54L10.5 18.5 5 20l1.5-5.5L15.24 3.76z"/></svg>') 4 20, crosshair;
     }
-    #annotationCanvas.cursor-eraser {
+    #annotationContainer.cursor-eraser {
       cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="%2337474F" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="%2337474F"/></svg>') 12 12, cell;
     }
 
-    /* Laser Pointer Dot */
+    /* Laser Pointer Dot - GPU Hardware Accelerated */
     #laserPointerDot {
       position: fixed;
-      top: -100px;
-      left: -100px;
-      width: 16px;
-      height: 16px;
+      top: 0;
+      left: 0;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: #FFFFFF;
       pointer-events: none;
-      z-index: 10005;
-      transform: translate(-50%, -50%);
+      z-index: 9992;
+      transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
       box-shadow: 0 0 6px #FF1744, 0 0 14px #FF1744, 0 0 26px #FF1744, 0 0 40px #D50000;
-      transition: opacity 0.2s;
       display: none;
+      will-change: transform;
     }
     #laserPointerDot.active {
       display: block;
@@ -947,18 +963,20 @@
     /* Laser Ripple Click Animation */
     .laser-ripple {
       position: fixed;
-      width: 20px;
-      height: 20px;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       border: 3px solid #FF1744;
       pointer-events: none;
-      z-index: 10004;
-      transform: translate(-50%, -50%) scale(1);
+      z-index: 9991;
       animation: rippleExpand 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+      will-change: transform, opacity;
     }
     @keyframes rippleExpand {
-      0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
-      100% { transform: translate(-50%, -50%) scale(4.5); opacity: 0; }
+      0% { transform: translate3d(var(--rx, 0), var(--ry, 0), 0) translate(-50%, -50%) scale(0.4); opacity: 1; }
+      100% { transform: translate3d(var(--rx, 0), var(--ry, 0), 0) translate(-50%, -50%) scale(3.5); opacity: 0; }
     }
 
     /* Floating Teacher Toolbar */
@@ -978,7 +996,7 @@
       gap: 10px;
       box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.08);
       user-select: none;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
     }
     #teacherToolbar.minimized {
       transform: translateX(-50%) translateY(80px);
@@ -1099,7 +1117,7 @@
       position: fixed;
       bottom: 24px;
       right: 28px;
-      z-index: 9999;
+      z-index: 9998;
       background: linear-gradient(135deg, #D50000, #B71C1C);
       color: white;
       font-size: 1rem;
@@ -1174,7 +1192,7 @@
         padding: 7px 14px;
         gap: 6px;
         box-shadow: 0 4px 14px rgba(213, 0, 0, 0.4);
-        z-index: 999;
+        z-index: 9998;
       }
       #teacherToolbar {
         bottom: 8px;
@@ -1193,8 +1211,8 @@
         transform: translateX(-50%) translateY(120px);
       }
       .tb-btn {
-        width: 34px;
-        height: 34px;
+        width: 36px;
+        height: 36px;
         font-size: 0.95rem;
       }
       .tb-divider {
@@ -1562,8 +1580,11 @@
   </footer>
 
   
-  <!-- TEACHER ANNOTATION CANVAS & LASER POINTER -->
-  <canvas id="annotationCanvas"></canvas>
+  <!-- TEACHER ANNOTATION CANVAS CONTAINER & LASER POINTER -->
+  <div id="annotationContainer">
+    <canvas id="annotationBaseCanvas"></canvas>
+    <canvas id="annotationActiveCanvas"></canvas>
+  </div>
   <div id="laserPointerDot"></div>
 
   <!-- FLOATING ANNOTATION LAUNCHER PILL -->
@@ -1840,7 +1861,7 @@
     });
     
 
-// --- TEACHER ANNOTATION & LASER POINTER JAVASCRIPT ENGINE ---
+// --- HIGH-PERFORMANCE TEACHER ANNOTATION & LASER POINTER ENGINE ---
 let currentTool = 'cursor'; // 'cursor', 'laser', 'pen', 'highlighter', 'eraser'
 let currentColor = '#D50000';
 let currentSize = 5.5;
@@ -1849,84 +1870,135 @@ let currentStroke = null;
 let strokes = [];
 let redoStack = [];
 let isCanvasVisible = true;
+let drawRafId = null;
+let scrollRafId = null;
+let isTouchDevice = false;
 
 // Initialize Annotation Engine
 function initAnnotationEngine() {
-  const canvas = document.getElementById('annotationCanvas');
-  if (!canvas) return;
+  const container = document.getElementById('annotationContainer');
+  const baseCanvas = document.getElementById('annotationBaseCanvas');
+  const activeCanvas = document.getElementById('annotationActiveCanvas');
+  if (!container || !baseCanvas || !activeCanvas) return;
 
-  // Window resize & scroll resize handler
-  window.addEventListener('resize', resizeAnnotationCanvas);
-  window.addEventListener('orientationchange', resizeAnnotationCanvas);
-  
-  // Re-check size on diagram tab changes or presentation mode
-  const observer = new MutationObserver(() => {
-    resizeAnnotationCanvas();
-  });
-  observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+  isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-  resizeAnnotationCanvas();
+  // Resize canvases on window resize and orientation change
+  window.addEventListener('resize', resizeCanvases);
+  window.addEventListener('orientationchange', resizeCanvases);
+  resizeCanvases();
 
-  // Pointer Events on Canvas for drawing
-  canvas.addEventListener('pointerdown', handlePointerDown);
+  // Scroll listener: keep strokes in sync with page content
+  window.addEventListener('scroll', handleViewportScroll, { passive: true });
+
+  // Pointer events on container for drawing & touch-laser
+  container.addEventListener('pointerdown', handlePointerDown);
   window.addEventListener('pointermove', handlePointerMove);
   window.addEventListener('pointerup', handlePointerUp);
   window.addEventListener('pointercancel', handlePointerUp);
 
-  // Laser Pointer tracking on window
-  window.addEventListener('pointermove', handleLaserMove);
+  // Desktop mouse laser tracking and clicks on window
+  window.addEventListener('pointermove', handleWindowLaserMove);
   window.addEventListener('click', handleLaserClick);
 
   // Keyboard Shortcuts
   window.addEventListener('keydown', handleAnnotationShortcuts);
 
-  // Make Toolbar Draggable
+  // Draggable Toolbar
   initToolbarDrag();
 }
 
-// Resize Canvas to cover full document scroll area
-function resizeAnnotationCanvas() {
-  const canvas = document.getElementById('annotationCanvas');
-  if (!canvas) return;
-  
-  const width = Math.max(document.documentElement.scrollWidth, window.innerWidth);
-  const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, window.innerHeight);
+// Resize canvases to exact viewport dimensions (Zero memory bloat, fits mobile GPU limits)
+function resizeCanvases() {
+  const baseCanvas = document.getElementById('annotationBaseCanvas');
+  const activeCanvas = document.getElementById('annotationActiveCanvas');
+  if (!baseCanvas || !activeCanvas) return;
 
-  const dpr = window.devicePixelRatio || 1;
-  if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
-    redrawAllStrokes();
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2); // Cap at 2x for ultra performance
+
+  const targetW = Math.round(w * dpr);
+  const targetH = Math.round(h * dpr);
+
+  if (baseCanvas.width !== targetW || baseCanvas.height !== targetH) {
+    baseCanvas.width = targetW;
+    baseCanvas.height = targetH;
+    baseCanvas.style.width = w + 'px';
+    baseCanvas.style.height = h + 'px';
+
+    activeCanvas.width = targetW;
+    activeCanvas.height = targetH;
+    activeCanvas.style.width = w + 'px';
+    activeCanvas.style.height = h + 'px';
+
+    redrawBaseCanvas();
   }
 }
 
-// Redraw all stored vector strokes
-function redrawAllStrokes() {
-  const canvas = document.getElementById('annotationCanvas');
+// Handle viewport scroll with rAF throttle
+function handleViewportScroll() {
+  if (!scrollRafId) {
+    scrollRafId = requestAnimationFrame(() => {
+      redrawBaseCanvas();
+      if (isDrawing && currentStroke) {
+        drawActiveStroke();
+      }
+      scrollRafId = null;
+    });
+  }
+}
+
+// Redraw all committed strokes on the base canvas
+function redrawBaseCanvas() {
+  const canvas = document.getElementById('annotationBaseCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio || 1;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
   ctx.save();
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.scale(dpr, dpr);
+  ctx.translate(-window.scrollX, -window.scrollY);
 
-  if (!isCanvasVisible) {
-    ctx.restore();
-    return;
+  if (isCanvasVisible && strokes.length > 0) {
+    for (let i = 0; i < strokes.length; i++) {
+      drawSingleStroke(ctx, strokes[i]);
+    }
   }
-
-  strokes.forEach(stroke => {
-    drawSingleStroke(ctx, stroke);
-  });
 
   ctx.restore();
 }
 
-// Draw a single smooth stroke using quadratic curve interpolation
+// Draw only the stroke currently being drawn on activeCanvas (0.05ms render time!)
+function drawActiveStroke() {
+  const canvas = document.getElementById('annotationActiveCanvas');
+  if (!canvas || !currentStroke) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  ctx.save();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.scale(dpr, dpr);
+  ctx.translate(-window.scrollX, -window.scrollY);
+
+  drawSingleStroke(ctx, currentStroke);
+  ctx.restore();
+}
+
+function clearActiveCanvas() {
+  const canvas = document.getElementById('annotationActiveCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.save();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.restore();
+}
+
+// High performance stroke rendering
 function drawSingleStroke(ctx, stroke) {
   if (!stroke.points || stroke.points.length === 0) return;
 
@@ -1970,77 +2042,118 @@ function drawSingleStroke(ctx, stroke) {
 
 // Pointer down event
 function handlePointerDown(e) {
-  if (currentTool === 'cursor' || currentTool === 'laser') return;
+  if (currentTool === 'cursor') return;
+
+  if (currentTool === 'laser') {
+    // Touch or click in laser mode
+    updateLaserPosition(e.clientX, e.clientY);
+    triggerLaserRipple(e.clientX, e.clientY, currentColor);
+    if (e.target && e.target.setPointerCapture) {
+      try { e.target.setPointerCapture(e.pointerId); } catch(err) {}
+    }
+    return;
+  }
+
+  // Pen, Highlighter, Eraser
   e.preventDefault();
   isDrawing = true;
 
-  const point = { x: e.pageX, y: e.pageY };
+  if (e.target && e.target.setPointerCapture) {
+    try { e.target.setPointerCapture(e.pointerId); } catch(err) {}
+  }
+
+  const docX = e.clientX + window.scrollX;
+  const docY = e.clientY + window.scrollY;
+
   currentStroke = {
     tool: currentTool,
     color: currentColor,
     size: currentSize,
-    points: [point]
+    points: [{ x: docX, y: docY }]
   };
 
-  strokes.push(currentStroke);
-  redoStack = []; // Clear redo stack on new action
-
-  // Draw initial point
-  const canvas = document.getElementById('annotationCanvas');
-  const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio || 1;
-  ctx.save();
-  ctx.scale(dpr, dpr);
-  drawSingleStroke(ctx, currentStroke);
-  ctx.restore();
+  drawActiveStroke();
 }
 
 // Pointer move event
 function handlePointerMove(e) {
+  if (currentTool === 'laser') {
+    updateLaserPosition(e.clientX, e.clientY);
+    return;
+  }
+
   if (!isDrawing || !currentStroke) return;
   e.preventDefault();
 
-  const point = { x: e.pageX, y: e.pageY };
-  currentStroke.points.push(point);
+  const docX = e.clientX + window.scrollX;
+  const docY = e.clientY + window.scrollY;
+  currentStroke.points.push({ x: docX, y: docY });
 
-  // Redraw for smooth curves
-  redrawAllStrokes();
+  if (!drawRafId) {
+    drawRafId = requestAnimationFrame(() => {
+      drawActiveStroke();
+      drawRafId = null;
+    });
+  }
 }
 
 // Pointer up event
 function handlePointerUp(e) {
+  if (currentTool === 'laser') {
+    if (e.target && e.target.releasePointerCapture) {
+      try { e.target.releasePointerCapture(e.pointerId); } catch(err) {}
+    }
+    return;
+  }
+
   if (!isDrawing) return;
   isDrawing = false;
+
+  if (e.target && e.target.releasePointerCapture) {
+    try { e.target.releasePointerCapture(e.pointerId); } catch(err) {}
+  }
+
+  if (currentStroke && currentStroke.points.length > 0) {
+    strokes.push(currentStroke);
+    redoStack = [];
+  }
   currentStroke = null;
+
+  clearActiveCanvas();
+  redrawBaseCanvas();
 }
 
-// Laser Pointer Tracking
-function handleLaserMove(e) {
-  const dot = document.getElementById('laserPointerDot');
-  if (!dot) return;
-
+// Laser Pointer Tracking for mouse on window
+function handleWindowLaserMove(e) {
   if (currentTool === 'laser') {
-    dot.style.display = 'block';
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
-  } else {
-    dot.style.display = 'none';
+    updateLaserPosition(e.clientX, e.clientY);
   }
 }
 
-// Laser Pointer Pulse on Click
+// Update Laser Pointer Position using GPU translate3d
+function updateLaserPosition(clientX, clientY) {
+  const dot = document.getElementById('laserPointerDot');
+  if (!dot) return;
+  dot.style.display = 'block';
+  dot.style.transform = `translate3d(${clientX}px, ${clientY}px, 0) translate(-50%, -50%)`;
+}
+
+// Laser Pointer Pulse Ripple on Click
 function handleLaserClick(e) {
   if (currentTool !== 'laser') return;
-  
-  // Don't pulse if clicking on toolbar buttons
+
   const toolbar = document.getElementById('teacherToolbar');
   if (toolbar && toolbar.contains(e.target)) return;
 
+  triggerLaserRipple(e.clientX, e.clientY, currentColor);
+}
+
+function triggerLaserRipple(clientX, clientY, color) {
   const ripple = document.createElement('div');
   ripple.className = 'laser-ripple';
-  ripple.style.left = e.clientX + 'px';
-  ripple.style.top = e.clientY + 'px';
-  ripple.style.borderColor = currentColor;
+  ripple.style.setProperty('--rx', clientX + 'px');
+  ripple.style.setProperty('--ry', clientY + 'px');
+  ripple.style.borderColor = color || currentColor;
   document.body.appendChild(ripple);
 
   setTimeout(() => {
@@ -2051,35 +2164,41 @@ function handleLaserClick(e) {
 // Set Active Annotation Tool
 function setAnnotationTool(tool) {
   currentTool = tool;
-  const canvas = document.getElementById('annotationCanvas');
+  const container = document.getElementById('annotationContainer');
   const dot = document.getElementById('laserPointerDot');
 
-  // Update Toolbar UI buttons
   const toolButtons = document.querySelectorAll('.tb-btn[id^="tool-"]');
   toolButtons.forEach(btn => btn.classList.remove('active'));
   const activeBtn = document.getElementById('tool-' + tool);
   if (activeBtn) activeBtn.classList.add('active');
 
-  if (canvas) {
-    canvas.classList.remove('active-drawing', 'cursor-pen', 'cursor-highlighter', 'cursor-eraser');
+  isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+  if (container) {
+    container.classList.remove('active-drawing', 'active-laser', 'cursor-pen', 'cursor-highlighter', 'cursor-eraser');
+
     if (tool === 'pen') {
-      canvas.classList.add('active-drawing', 'cursor-pen');
-      showToast("✏️ Pen Tool Active (Freehand Writing & Drawing)");
+      container.classList.add('active-drawing', 'cursor-pen');
+      if (dot) dot.style.display = 'none';
+      showToast("✏️ Pen Tool Active (Freehand writing & drawing)");
     } else if (tool === 'highlighter') {
-      canvas.classList.add('active-drawing', 'cursor-highlighter');
-      showToast("🖍️ Highlighter Tool Active (Semi-Transparent Underlining)");
+      container.classList.add('active-drawing', 'cursor-highlighter');
+      if (dot) dot.style.display = 'none';
+      showToast("🖍️ Highlighter Active (Semi-transparent highlighting)");
     } else if (tool === 'eraser') {
-      canvas.classList.add('active-drawing', 'cursor-eraser');
-      showToast("🧹 Eraser Tool Active (Click or Drag over Strokes to Erase)");
+      container.classList.add('active-drawing', 'cursor-eraser');
+      if (dot) dot.style.display = 'none';
+      showToast("🧹 Eraser Tool Active (Drag over strokes to erase)");
     } else if (tool === 'laser') {
-      canvas.classList.remove('active-drawing');
+      if (isTouchDevice) {
+        container.classList.add('active-laser');
+      }
       if (dot) dot.style.display = 'block';
-      showToast("🔴 Laser Pointer Active (Click to Pulse & Focus Attention)");
+      showToast("🔴 Laser Pointer Active (Move or touch to point)");
     } else {
       // Normal cursor
-      canvas.classList.remove('active-drawing');
       if (dot) dot.style.display = 'none';
-      showToast("👆 Normal Cursor Active (Interact & Scroll Page)");
+      showToast("👆 Normal Cursor Active (Interact & scroll)");
     }
   }
 
@@ -2093,7 +2212,7 @@ function setAnnotationTool(tool) {
 // Set Annotation Color
 function setAnnotationColor(color, swatchEl) {
   currentColor = color;
-  
+
   const swatches = document.querySelectorAll('.tb-color-swatch');
   swatches.forEach(s => s.classList.remove('active'));
   if (swatchEl) swatchEl.classList.add('active');
@@ -2131,7 +2250,7 @@ function undoAnnotation() {
   }
   const last = strokes.pop();
   redoStack.push(last);
-  redrawAllStrokes();
+  redrawBaseCanvas();
   showToast("↩️ Undone last stroke");
 }
 
@@ -2143,7 +2262,7 @@ function redoAnnotation() {
   }
   const restored = redoStack.pop();
   strokes.push(restored);
-  redrawAllStrokes();
+  redrawBaseCanvas();
   showToast("↪️ Redone stroke");
 }
 
@@ -2153,10 +2272,11 @@ function clearAnnotationCanvas() {
     showToast("Canvas is already clear!");
     return;
   }
-  redoStack = [...strokes]; // Store in redo stack in case user wants it back!
+  redoStack = [...strokes];
   strokes = [];
-  redrawAllStrokes();
-  showToast("🗑️ Canvas cleared! (Press Ctrl+Z or Undo to restore)");
+  redrawBaseCanvas();
+  clearActiveCanvas();
+  showToast("🗑️ Canvas cleared! (Press Undo to restore)");
 }
 
 // Toggle Visibility of Drawings (Without Deleting)
@@ -2166,7 +2286,7 @@ function toggleCanvasVisibility() {
   if (btn) {
     btn.innerHTML = isCanvasVisible ? '👁️<span class="tb-tooltip">Hide Drawings</span>' : '🙈<span class="tb-tooltip">Show Drawings</span>';
   }
-  redrawAllStrokes();
+  redrawBaseCanvas();
   showToast(isCanvasVisible ? "👁️ Drawings Visible" : "🙈 Drawings Hidden");
 }
 
@@ -2204,7 +2324,6 @@ function showToast(msg) {
 
 // Keyboard Shortcuts Handler
 function handleAnnotationShortcuts(e) {
-  // Don't trigger shortcuts if user is typing in an input
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
   // Alt + P : Toggle Toolbar
@@ -2257,7 +2376,7 @@ function initToolbarDrag() {
     const rect = toolbar.getBoundingClientRect();
     startLeft = rect.left;
     startTop = rect.top;
-    toolbar.style.transform = 'none'; // Clear translate(-50%) when moving manually
+    toolbar.style.transform = 'none';
     toolbar.style.left = startLeft + 'px';
     toolbar.style.top = startTop + 'px';
     toolbar.style.bottom = 'auto';

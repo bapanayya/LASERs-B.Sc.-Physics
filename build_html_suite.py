@@ -51,7 +51,7 @@ def get_shared_css():
     .top-nav {
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 10002;
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       border-bottom: 2px solid #E2E8F0;
@@ -610,6 +610,7 @@ def get_shared_css():
         width: 100%;
         position: sticky;
         top: 0;
+        z-index: 10002;
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
       }
       .nav-header-bar {
